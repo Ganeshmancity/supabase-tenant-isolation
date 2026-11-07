@@ -1,4 +1,5 @@
 # supabase-tenant-isolation
+n[![test](https://github.com/Ganeshmancity/supabase-tenant-isolation/actions/workflows/test.yml/badge.svg)](https://github.com/Ganeshmancity/supabase-tenant-isolation/actions/workflows/test.yml)
 
 Tenant isolation for a multi-tenant chatbot platform on Supabase, with the tests that prove it.
 
