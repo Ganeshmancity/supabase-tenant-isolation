@@ -28,14 +28,13 @@ select is_empty(
 );
 
 -- security definer functions skip RLS too; only the reviewed ones are allowed
-select results_eq(
-  $$ select p.proname::text
-     from pg_proc p
-     join pg_namespace n on n.oid = p.pronamespace
-     where n.nspname in ('public', 'private')
-       and p.prosecdef
-     order by 1 $$,
-  $$ values ('user_tenant_ids'), ('widget_search') $$,
+select is(
+  (select array_agg(p.proname::text order by p.proname)
+   from pg_proc p
+   join pg_namespace n on n.oid = p.pronamespace
+   where n.nspname in ('public', 'private')
+     and p.prosecdef),
+  array['user_tenant_ids', 'widget_search'],
   'only reviewed functions are security definer'
 );
 
