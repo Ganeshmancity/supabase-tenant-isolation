@@ -1,0 +1,30 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Start Supabase (migrations + seed)
+        run: npx supabase start -x realtime,edge-runtime,logflare,vector,imgproxy,supavisor,mailpit,studio
+
+      - name: Database tests (pgTAP)
+        run: npx supabase test db
+
+      - name: API tests (every user, every attempt)
+        run: |
+          export VITE_SUPABASE_URL=http://127.0.0.1:54321
+          export VITE_SUPABASE_ANON_KEY=$(npx supabase status -o json | jq -r '.ANON_KEY')
+          npx vitest run

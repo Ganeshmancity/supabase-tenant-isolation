@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: 14px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2328;
+  background: #fff;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+header {
+  border-bottom: 1px solid #d0d7de;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 16px 0 6px;
+  color: #59636e;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+section {
+  margin-bottom: 28px;
+}
+
+.users {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.user {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.user:hover {
+  background: #f6f8fa;
+}
+
+.user.active {
+  border-color: #d0d7de;
+  background: #f6f8fa;
+}
+
+.user .name {
+  display: block;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5px 8px;
+  border-bottom: 1px solid #eaeef2;
+  vertical-align: top;
+}
+
+th {
+  font-weight: 600;
+  font-size: 12px;
+  color: #59636e;
+  border-bottom-color: #d0d7de;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.row h2 {
+  margin: 0;
+}
+
+.run {
+  font: inherit;
+  padding: 3px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  background: #f6f8fa;
+  cursor: pointer;
+}
+
+.run:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.muted {
+  color: #59636e;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.mono,
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+}
+
+.good {
+  color: #1a7f37;
+  font-weight: 600;
+}
+
+.bad {
+  color: #cf222e;
+  font-weight: 600;
+}
+
+.error {
+  color: #cf222e;
+}
